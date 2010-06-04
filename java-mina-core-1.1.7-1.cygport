@@ -1,0 +1,17 @@
+JAVA_CLASSPATH="slf4j-api.jar"
+inherit ant
+
+DESCRIPTION="Java asynchronous networking API"
+HOMEPAGE="http://mina.apache.org/"
+SRC_URI="mirror://gentoo/${P#java-}-sources.jar
+         mirror://portage/dev-java/${PN#java-}/files/build.xml"
+SRC_DIR=.
+
+CYGPORT_USE_UNSTABLE_API=1
+src_unpack_hook() {
+	${JAR} xf ${P#java-}-sources.jar
+}
+
+ANT_BUILD_TARGETS="jar javadoc"
+ANT_INSTALL_JARS="mina-core.jar"
+ANT_INSTALL_JAVADOC="docs"
